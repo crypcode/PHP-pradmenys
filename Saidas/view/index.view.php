@@ -17,20 +17,40 @@
             <?php endforeach;?>
         </ul>
     </nav>
-    <ul>
-        <?php foreach ($mokiniai as $mokinys => $duomenys): ?>
-            <?php foreach ($duomenys as $visi => $pazymiai): ?>
-                <?php if(is_array($pazymiai)):?>
-                <?php foreach ($pazymiai as $data => $duom): ?>
-                <?=$data;?>
-                <?=$duom;?>
-               <?php endforeach;?>
-                <?php else :?>
-                <?=$pazymiai;?>
+    <table>
+        <tr>
+            <th>Klasė</th>
+            <th>Kodas</th>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>Kontrolinių darbų vidurkis</th>
+            <th>Duomenų formavimo data</th>
+        </tr>
+        <tr>
+
+            <?php foreach ($mokiniai as $id => $vardas) : ?>
+
+            <td>12C</td>
+            <td><?=rand(10,100); ?></td>
+            <?php foreach ($vardas as $pavadinimai => $mokslai) : ?>
+                <?php if (is_array($mokslai)): ?>
+                    <?php $suma=0; $kiekis = 0; ?>
+                    <?php foreach ($mokslai as $disciplina => $pazymys) : ?>
+                        <?php $suma += $pazymys; $kiekis += count($mokslai); $average =$suma/$kiekis;?>
+                        <?=var_dump($suma);?>
+                    <?php endforeach; ?>
+                    <td><?= number_format((float)$average, 2, '.', ''); ?></td>
+
+                <?php else: ?>
+                    <td><?= $mokslai; ?></td>
                 <?php endif; ?>
-            <?php endforeach;?>
-        <?php endforeach;?>
-    </ul>
+            <?php endforeach; ?>
+            <td><?php $tz_object = new DateTimeZone('Europe/Riga'); $datetime = new DateTime();
+                $datetime->setTimezone($tz_object);
+                echo $datetime->format('Y\-m\-d\ h:i:s');?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
 </body>
 </html>
 
