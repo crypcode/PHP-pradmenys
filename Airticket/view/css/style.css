@@ -1,0 +1,16 @@
+ul > li{
+    display: inline-block;
+}
+.container{
+   background-color: lemonchiffon;
+    padding: 5px;
+}
+.form-group{
+    padding: 8px;
+}
+button{
+    padding: 5px;
+}
+.header{
+    background-color: lightgray;
+}
