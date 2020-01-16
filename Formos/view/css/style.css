@@ -1,0 +1,13 @@
+ul > li{
+    display: inline-block;
+}
+.container{
+   background-color: lemonchiffon;
+    padding: 5px;
+}
+.form-group{
+    padding: 10px;
+}
+button{
+    padding: 5px;
+}
